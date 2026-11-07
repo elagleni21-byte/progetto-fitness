@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Apex Fitness | Personal Training d’élite per professionisti</title>
+<meta name="description" content="Coaching d’élite su misura per professionisti con poco tempo. Allenamenti da 45 minuti, nutrizione sostenibile, supporto 24/7.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;800;900&display=swap" rel="stylesheet">
+<style>
+:root {
+  color-scheme: dark;
+  --bg: #0d0d0d; --bg2: #1a1a1a; --line: #2a2a2a;
+  --text: #f5f5f2; --muted: #9c9c98;
+  --neon: #ff5e00; --neon-glow: rgba(255,94,0,.45); --on-neon: #120500;
+  --r: 12px; --t: .3s;
+  --font: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  box-sizing: border-box;
+  padding-top: env(safe-area-inset-top, 0px);
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+}
+*, *::before, *::after { box-sizing: inherit; }
+html { scroll-behavior: smooth; scroll-padding-top: calc(env(safe-area-inset-top, 0px) + 5rem); }
+body { margin: 0; background: var(--bg); color: var(--text); font-family: var(--font); line-height: 1.65; font-size: 1.0625rem; -webkit-font-smoothing: antialiased; overflow-x: hidden; }
+body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); background: rgba(13,13,13,.8); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); z-index: 50; }
+a { color: inherit; }
+:focus-visible { outline: 3px solid var(--neon); outline-offset: 3px; }
+.wrap { width: min(100% - 2.5rem, 72rem); margin-inline: auto; }
+h1, h2, h3 { margin: 0; font-weight: 900; letter-spacing: -.03em; line-height: 1.02; }
+h2 { font-size: clamp(2rem, 6vw, 3.4rem); margin-bottom: 1rem; }
+h3 { font-size: 1.35rem; letter-spacing: -.01em; }
+p { margin: 0 0 1rem; }
+section { padding: 5rem 0; position: relative; }
+.head { max-width: 40rem; margin-bottom: 3rem; }
+.head p { color: var(--muted); font-size: 1.15rem; }
+
+/* Bottoni */
+.btn { display: inline-flex; align-items: center; justify-content: center; gap: .5rem; background: var(--neon); color: var(--on-neon); font: 700 1rem var(--font); padding: .95rem 1.7rem; border: 0; border-radius: var(--r); text-decoration: none; cursor: pointer; transition: transform var(--t), box-shadow var(--t), background var(--t); box-shadow: 0 6px 24px -8px var(--neon-glow); }
+.btn:hover { transform: translateY(-3px); background: #ff7a2b; box-shadow: 0 14px 34px -8px var(--neon-glow); }
+.btn:active { transform: translateY(0) scale(.98); }
+.btn.sm { padding: .6rem 1.1rem; font-size: .92rem; }
+.btn.outline { background: transparent; color: var(--text); border: 1.5px solid var(--line); box-shadow: none; }
+.btn.outline:hover { border-color: var(--neon); background: rgba(255,94,0,.08); box-shadow: none; }
+.btn.block { width: 100%; }
+
+/* Navbar */
+header { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 40; background: rgba(13,13,13,.72); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); border-bottom: 1px solid rgba(255,255,255,.07); }
+.bar { display: flex; align-items: center; justify-content: space-between; height: 4rem; }
+.logo { font-weight: 900; letter-spacing: .12em; text-decoration: none; font-size: 1.05rem; }
+.logo i { font-style: normal; color: var(--neon); }
+
+/* Hero */
+.hero { min-height: calc(100svh - 4rem); display: grid; align-items: center; padding: 4rem 0 5rem; overflow: hidden; isolation: isolate; }
+.hero::before, .hero::after { content: ""; position: absolute; border-radius: 50%; filter: blur(90px); z-index: -1; }
+.hero::before { width: 34rem; height: 34rem; right: -10rem; top: -6rem; background: radial-gradient(circle, rgba(255,94,0,.5), transparent 65%); animation: drift 14s ease-in-out infinite alternate; }
+.hero::after { width: 26rem; height: 26rem; left: -10rem; bottom: -8rem; background: radial-gradient(circle, rgba(255,69,0,.22), transparent 65%); animation: drift 18s ease-in-out infinite alternate-reverse; }
+.grid-bg { position: absolute; inset: 0; z-index: -1; background-image: linear-gradient(rgba(255,255,255,.035) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.035) 1px, transparent 1px); background-size: 56px 56px; mask-image: radial-gradient(ellipse at 50% 40%, #000 20%, transparent 75%); -webkit-mask-image: radial-gradient(ellipse at 50% 40%, #000 20%, transparent 75%); }
+@keyframes drift { to { transform: translate(-4rem, 3rem) scale(1.15); } }
+.hero h1 { font-size: clamp(2.8rem, 10.5vw, 6.6rem); max-width: 15ch; }
+.hero h1 em { font-style: normal; color: var(--neon); display: block; }
+.hero .sub { font-size: clamp(1.1rem, 2.6vw, 1.4rem); color: var(--muted); max-width: 40rem; margin: 1.75rem 0 2.5rem; }
+.pulse { font-size: 1.1rem; padding: 1.2rem 2rem; animation: pulse 2.2s infinite; }
+@keyframes pulse { 0% { box-shadow: 0 0 0 0 rgba(255,94,0,.6); } 70% { box-shadow: 0 0 0 22px rgba(255,94,0,0); } 100% { box-shadow: 0 0 0 0 rgba(255,94,0,0); } }
+.trust { margin-top: 1.5rem; font-size: .92rem; color: var(--muted); }
+
+/* Benefici */
+.benefits { background: var(--bg2); border-block: 1px solid var(--line); }
+.cols { display: grid; gap: 1.25rem; }
+.box { background: var(--bg); border: 1px solid var(--line); border-radius: var(--r); padding: 2rem; transition: transform var(--t), border-color var(--t), box-shadow var(--t); }
+.box:hover { transform: translateY(-6px); border-color: rgba(255,94,0,.6); box-shadow: 0 20px 40px -20px rgba(0,0,0,.9); }
+.ico { width: 3.2rem; height: 3.2rem; border-radius: var(--r); display: grid; place-items: center; background: rgba(255,94,0,.12); color: var(--neon); margin-bottom: 1.25rem; }
+.ico svg { width: 1.6rem; height: 1.6rem; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+.box p { color: var(--muted); margin: .6rem 0 0; }
+
+/* Prezzi */
+.plans { display: grid; gap: 1.5rem; align-items: stretch; }
+.plan { background: var(--bg2); border: 1px solid var(--line); border-radius: var(--r); padding: 2.2rem 1.8rem; display: flex; flex-direction: column; position: relative; transition: transform var(--t), box-shadow var(--t); }
+.plan:hover { transform: translateY(-6px); box-shadow: 0 24px 50px -24px rgba(0,0,0,.9); }
+.plan.hot { border: 1.5px solid var(--neon); background: linear-gradient(180deg, #221409, var(--bg2) 55%); box-shadow: 0 0 50px -14px var(--neon-glow); }
+.badge { position: absolute; top: -.8rem; left: 1.8rem; background: var(--neon); color: var(--on-neon); font-weight: 800; font-size: .8rem; padding: .3rem .9rem; border-radius: 99px; }
+.plan .desc { color: var(--muted); margin: .5rem 0 1.4rem; }
+.price { font-size: 2.8rem; font-weight: 900; letter-spacing: -.04em; margin-bottom: 1.4rem; }
+.price small { font-size: 1rem; font-weight: 500; color: var(--muted); letter-spacing: 0; }
+.plan ul { list-style: none; margin: 0 0 2rem; padding: 1.4rem 0 0; border-top: 1px solid var(--line); }
+.plan li { display: flex; gap: .75rem; margin-bottom: .75rem; }
+.plan li::before { content: "✓"; color: var(--neon); font-weight: 900; flex: none; }
+.plan .btn { margin-top: auto; }
+
+/* Recensioni */
+.reviews { background: var(--bg2); border-block: 1px solid var(--line); }
+.quote { background: var(--bg); border: 1px solid var(--line); border-radius: var(--r); padding: 2rem; display: flex; flex-direction: column; transition: border-color var(--t), transform var(--t); }
+.quote:hover { border-color: rgba(255,94,0,.6); transform: translateY(-4px); }
+.stars { color: var(--neon); letter-spacing: .15em; margin-bottom: 1rem; }
+.quote blockquote { margin: 0 0 1.5rem; font-size: 1.1rem; line-height: 1.55; }
+.quote strong { color: var(--neon); }
+.who { display: flex; align-items: center; gap: .9rem; margin-top: auto; }
+.av { width: 2.8rem; height: 2.8rem; border-radius: 50%; background: var(--bg2); border: 1.5px solid var(--neon); display: grid; place-items: center; font-weight: 800; font-size: .9rem; }
+.who span { display: block; color: var(--muted); font-size: .9rem; }
+
+/* Contatto */
+.cta-grid { display: grid; gap: 2.5rem; align-items: center; }
+.slots { display: flex; gap: .4rem; margin: 1.5rem 0 .6rem; }
+.slots i { flex: 1; height: .5rem; border-radius: 99px; background: var(--neon); box-shadow: 0 0 10px var(--neon-glow); }
+.slots i.off { background: var(--line); box-shadow: none; }
+.slots-t { color: var(--muted); font-size: .92rem; }
+form { background: var(--bg2); border: 1px solid var(--line); border-radius: var(--r); padding: 2rem 1.6rem; display: grid; gap: 1.2rem; box-shadow: 0 30px 60px -30px #000; }
+label { display: grid; gap: .45rem; font-weight: 600; font-size: .92rem; }
+input { font: inherit; font-size: 1rem; color: var(--text); background: var(--bg); border: 1px solid var(--line); border-radius: var(--r); padding: 1rem 1.1rem; width: 100%; transition: border-color var(--t), box-shadow var(--t); }
+input::placeholder { color: #66665f; }
+input:focus { outline: none; border-color: var(--neon); box-shadow: 0 0 0 4px rgba(255,94,0,.22); }
+.fine { font-size: .82rem; color: var(--muted); margin: 0; text-align: center; }
+
+/* Footer */
+footer { border-top: 1px solid var(--line); padding: 3rem 0 2.5rem; text-align: center; color: var(--muted); font-size: .92rem; }
+.motto { font-size: clamp(1.2rem, 3.5vw, 1.7rem); font-weight: 800; color: var(--text); letter-spacing: -.02em; margin-bottom: 1.5rem; }
+.social { display: flex; justify-content: center; flex-wrap: wrap; gap: 1.5rem; margin-bottom: 1.5rem; }
+.social a { text-decoration: none; transition: color var(--t); }
+.social a:hover { color: var(--neon); }
+
+@media (min-width: 48rem) {
+  section { padding: 7rem 0; }
+  .cols, .plans { grid-template-columns: repeat(3, 1fr); }
+  .plan.hot { transform: scale(1.04); }
+  .plan.hot:hover { transform: scale(1.04) translateY(-6px); }
+  .cta-grid { grid-template-columns: 1fr 1fr; gap: 5rem; }
+}
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .hero::before, .hero::after, .pulse { animation: none; }
+  * { transition: none !important; }
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap bar">
+    <a class="logo" href="#top">APEX<i>.</i>FITNESS</a>
+    <a class="btn sm" href="#contatto">Inizia Ora</a>
+  </div>
+</header>
+
+<main id="top">
+  <section class="hero">
+    <div class="grid-bg"></div>
+    <div class="wrap">
+      <h1>Il tuo corpo è il tuo asset più prezioso. <em>Investi in te stesso.</em></h1>
+      <p class="sub">Programmi di coaching d’élite su misura per professionisti che non hanno tempo da perdere. Risultati garantiti in 90 giorni.</p>
+      <a class="btn pulse" href="#contatto">Richiedi la tua Consulenza Gratuita</a>
+      <p class="trust">Nessun impegno. Ti rispondiamo entro 24 ore.</p>
+    </div>
+  </section>
+
+  <section class="benefits" id="metodo">
+    <div class="wrap">
+      <div class="head">
+        <h2>Perché siamo diversi</h2>
+        <p>Un metodo costruito attorno alla tua agenda, non il contrario.</p>
+      </div>
+      <div class="cols">
+        <article class="box">
+          <div class="ico"><svg viewBox="0 0 24 24"><path d="M13 2 4 14h7l-1 8 9-12h-7z"/></svg></div>
+          <h3>Massima Efficienza</h3>
+          <p>Allenamenti da 45 minuti ottimizzati per agende piene. Meno tempo in palestra, più risultati.</p>
+        </article>
+        <article class="box">
+          <div class="ico"><svg viewBox="0 0 24 24"><path d="M5 21c0-9 5-15 15-16 0 10-6 15-15 16z"/><path d="M5 21c2-5 5-8 9-10"/></svg></div>
+          <h3>Nutrizione Sostenibile</h3>
+          <p>Nessuna dieta da fame. Mangia ciò che ami e ottieni risultati, anche con le cene di lavoro.</p>
+        </article>
+        <article class="box">
+          <div class="ico"><svg viewBox="0 0 24 24"><path d="M21 12a8 8 0 0 1-11.6 7.1L3 21l1.9-5.4A8 8 0 1 1 21 12z"/></svg></div>
+          <h3>Supporto 24/7</h3>
+          <p>Un coach in tasca tramite WhatsApp per ogni tuo dubbio, quando ne hai bisogno.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section id="servizi">
+    <div class="wrap">
+      <div class="head">
+        <h2>Scegli il tuo percorso</h2>
+        <p>Tre pacchetti esclusivi, un solo obiettivo: la tua trasformazione.</p>
+      </div>
+      <div class="plans">
+        <article class="plan">
+          <h3>Essential Coaching</h3>
+          <p class="desc">Per chi vuole una guida chiara e sa allenarsi in autonomia.</p>
+          <div class="price">€149 <small>/ mese</small></div>
+          <ul>
+            <li>Scheda personalizzata ogni mese</li>
+            <li>Controllo mensile dei progressi</li>
+            <li>Libreria video degli esercizi</li>
+          </ul>
+          <a class="btn outline block" href="#contatto">Scegli Essential</a>
+        </article>
+        <article class="plan hot">
+          <span class="badge">Più Scelto</span>
+          <h3>Elite Transformation</h3>
+          <p class="desc">Il percorso completo per cambiare il tuo fisico in 90 giorni.</p>
+          <div class="price">€299 <small>/ mese</small></div>
+          <ul>
+            <li>Tutto ciò che è incluso in Essential</li>
+            <li>Piano nutrizionale su misura</li>
+            <li>Supporto quotidiano via WhatsApp</li>
+            <li>Videocall di revisione ogni settimana</li>
+          </ul>
+          <a class="btn block" href="#contatto">Scegli Elite</a>
+        </article>
+        <article class="plan">
+          <h3>VIP One-to-One</h3>
+          <p class="desc">Accesso totale e attenzione esclusiva, senza compromessi.</p>
+          <div class="price">€590 <small>/ mese</small></div>
+          <ul>
+            <li>Sessioni individuali illimitate</li>
+            <li>Accesso diretto al coach 24/7</li>
+            <li>Nutrizione e integrazione su misura</li>
+            <li>Priorità assoluta sul calendario</li>
+          </ul>
+          <a class="btn outline block" href="#contatto">Scegli VIP</a>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="reviews" id="risultati">
+    <div class="wrap">
+      <div class="head">
+        <h2>Risultati reali, vite diverse</h2>
+        <p>Professionisti come te, con agende piene e obiettivi chiari.</p>
+      </div>
+      <div class="cols">
+        <article class="quote">
+          <div class="stars" aria-label="5 stelle su 5">★★★★★</div>
+          <blockquote><strong>-12 kg in 3 mesi</strong> senza rinunciare alle cene di lavoro. Non pensavo fosse possibile con i miei orari.</blockquote>
+          <div class="who"><div class="av">MV</div><div>Marco V.<span>Imprenditore</span></div></div>
+        </article>
+        <article class="quote">
+          <div class="stars" aria-label="5 stelle su 5">★★★★★</div>
+          <blockquote>Quarantacinque minuti, tre volte a settimana. Ho ritrovato <strong>energia e concentrazione</strong> in ufficio come non succedeva da anni.</blockquote>
+          <div class="who"><div class="av">LB</div><div>Laura B.<span>Avvocato</span></div></div>
+        </article>
+        <article class="quote">
+          <div class="stars" aria-label="5 stelle su 5">★★★★★</div>
+          <blockquote>Il supporto su WhatsApp fa la differenza. Anche in viaggio ho <strong>sempre un piano</strong> e qualcuno che mi tiene sul pezzo.</blockquote>
+          <div class="who"><div class="av">AR</div><div>Andrea R.<span>Manager</span></div></div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section id="contatto">
+    <div class="wrap cta-grid">
+      <div>
+        <h2>Le iscrizioni sono limitate a soli 10 nuovi clienti questo mese.</h2>
+        <p style="color:var(--muted)">Assicurati il tuo posto. Compila il modulo: ti ricontatteremo per fissare la tua consulenza gratuita.</p>
+        <div class="slots" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i class="off"></i><i class="off"></i><i class="off"></i></div>
+        <div class="slots-t">Restano 3 posti disponibili</div>
+      </div>
+      <form action="mailto:info@apexfitness.it" method="post" enctype="text/plain">
+        <label>Nome
+          <input type="text" name="nome" placeholder="Il tuo nome" autocomplete="name" required>
+        </label>
+        <label>Email
+          <input type="email" name="email" placeholder="nome@esempio.it" autocomplete="email" required>
+        </label>
+        <label>Telefono
+          <input type="tel" name="telefono" placeholder="+39 333 000 0000" autocomplete="tel">
+        </label>
+        <button class="btn block pulse" type="submit">Riserva il mio posto</button>
+        <p class="fine">I tuoi dati sono al sicuro e non verranno condivisi.</p>
+      </form>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <p class="motto">La disciplina costruisce ciò che la motivazione inizia.</p>
+    <div class="social">
+      <a href="#">Instagram</a><a href="#">TikTok</a><a href="#">YouTube</a><a href="#">WhatsApp</a>
+    </div>
+    <p>© 2026 Apex Fitness. Tutti i diritti riservati.</p>
+  </div>
+</footer>
+
+</body>
+</html>
